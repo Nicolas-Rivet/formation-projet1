@@ -1,3 +1,5 @@
+// Page index
+
 function showProducts() {
     let listeProducts='';
 
@@ -24,3 +26,5 @@ function showProducts() {
     });
 }
 showProducts();
+
+// Page produit
