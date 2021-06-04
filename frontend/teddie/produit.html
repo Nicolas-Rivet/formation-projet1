@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="generator" content="">
-        <title>Page accueil</title>
+        <title>Page produit</title>
 
 
         <!-- Bootstrap core CSS -->
@@ -26,8 +26,8 @@
                 </a>
 
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Index</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Produit</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5500" class="nav-link active" aria-current="page">Index</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5500/teddie/produit.html" class="nav-link">Produit</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Panier</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Confirmation de commande</a></li>
                 </ul>
@@ -36,7 +36,7 @@
 
         <section class="mb-4">
             <div class="container">
-                <div><span>Home</span>&nbsp;/&nbsp;<span>Teddies</span>&nbsp;/&nbsp;<span>Norbert</span></div>
+                <div><span>Home</span>&nbsp;/&nbsp;<span>Teddies</span>&nbsp;/&nbsp;<span id="productNameAriane"></span></div>
             </div>
         </section>
 
@@ -45,63 +45,32 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 pe-2">
                         <div alt="" style=" width:100%;">
-                            <div class="border">
-                                    <img style="width:100%" src="http://localhost:3000/images/teddy_1.jpg">
-                            </div>
-                            <div class="my-4 row">
-                                <div class="col-lg-4">
-                                    <div class="border" style="height: 140px; background-color: blue;"></div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="border" style="height: 140px; background-color: blue;"></div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="border" style="height: 140px; background-color: blue;"></div>
-                                </div>
+                            <div class="border" id="productImageUrl">
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-lg-6 col-md-6 pe-2" style="text-align: left;">
                         <div>
-                            <p class="h1 mb-2 text-uppercase">Norbert</p>
+                            <p class="h1 mb-2 text-uppercase" id="productName"></p>
                         </div>
-                        <p class="h1 mb-2 text-uppercase">29&nbsp;€</p>
+                        <p class="h1 mb-2 text-uppercase" id="productPrice"></p>
 
                         <div class="card my-4">
                             <div class="card-body">
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text" id="productDescription"></p>
                             </div>
                         </div>
                         
                         <div>
                             <div class="py-2">
                                 <span>Coloris disponibles : </span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
-                                    <circle cx="50" cy="50" r="50" fill="grey"></circle>
-                                    <circle cx="50" cy="50" r="48" fill="Tan"></circle>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
-                                    <circle cx="50" cy="50" r="50" fill="grey"></circle>
-                                    <circle cx="50" cy="50" r="48" fill="Chocolate"></circle>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
-                                    <circle cx="50" cy="50" r="50" fill="grey"></circle>
-                                    <circle cx="50" cy="50" r="48" fill="Black"></circle>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
-                                    <circle cx="50" cy="50" r="50" fill="grey"></circle>
-                                    <circle cx="50" cy="50" r="48" fill="White"></circle>
-                                </svg>
+                                <span id="productColors"></span>
                             </div>
+                            
 
                             <div class="d-grid gap-2">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Sélectionnez le coloris</option>
-                                    <option value="1">Tan</option>
-                                    <option value="2">Chocolate</option>
-                                    <option value="3">Black</option>
-                                    <option value="4">White</option>
+                                <select class="form-select" aria-label="Default select example" id="commandColor">
                                 </select>
                                 <button class="btn btn-success" type="button">Button</button>
                             </div>
@@ -111,6 +80,6 @@
                 </div>
             </div>
         </section>
-        <script src="/js/index.js"></script>
+        <script src="/js/product.js"></script>
     </body>
   </html>
