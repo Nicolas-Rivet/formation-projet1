@@ -28,7 +28,7 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a href="http://127.0.0.1:5500" class="nav-link active" aria-current="page">Index</a></li>
                     <li class="nav-item"><a href="http://127.0.0.1:5500/teddie/produit.html" class="nav-link">Produit</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Panier</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5500/panier.html" class="nav-link">Panier</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Confirmation de commande</a></li>
                 </ul>
             </header>
@@ -36,24 +36,19 @@
 
         <section class="mb-4">
             <div class="container">
-                <div><span>Home</span>&nbsp;/&nbsp;<span>Teddies</span>&nbsp;/&nbsp;<span id="productNameAriane"></span></div>
+                <div><span>Home</span>&nbsp;-&nbsp;<span>Teddies</span>&nbsp;-&nbsp;<span id="productNameAriane"></span></div>
             </div>
         </section>
 
-        <section class="text-center mb-4">
+        <section class="mb-4">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 pe-2">
-                        <div alt="" style=" width:100%;">
-                            <div class="border" id="productImageUrl">
-                            </div>
-                        </div>
+                        <div class="border" style=" width:100%;" id="productImageUrl"></div>
                     </div>
                     
-                    <div class="col-lg-6 col-md-6 pe-2" style="text-align: left;">
-                        <div>
-                            <p class="h1 mb-2 text-uppercase" id="productName"></p>
-                        </div>
+                    <div class="col-lg-6 col-md-6 pe-2">
+                        <p class="h1 mb-2 text-uppercase" id="productName"></p>
                         <p class="h1 mb-2 text-uppercase" id="productPrice"></p>
 
                         <div class="card my-4">
@@ -67,7 +62,6 @@
                                 <span>Coloris disponibles : </span>
                                 <span id="productColors"></span>
                             </div>
-                            
 
                             <div class="d-grid gap-2">
                                 <select class="form-select" aria-label="Default select example" id="commandColor">
@@ -80,6 +74,16 @@
                 </div>
             </div>
         </section>
+
+        <section class="mb-4">
+            <div class="container my-4">
+                <div class="text-uppercase text-center h5"><span>Produits similaires</span></div>
+            </div>
+            <div class="container">
+                <div class="row fadeIn productRow" id="listeProductsTeddies"></div>
+            </div>
+        </section>
+
         <script src="/js/product.js"></script>
     </body>
   </html>
