@@ -1,9 +1,12 @@
 // Page index
 
+
+
 function showProductsTeddies() {
     let listeProductsTeddies='';
+    let categorie='teddies';
 
-    fetch('http://localhost:3000/api/teddies/')
+    fetch('http://localhost:3000/api/' + categorie)
     .then(function(response){
         return response.json()
     })
@@ -12,11 +15,11 @@ function showProductsTeddies() {
             console.log(produits[i]);
             listeProductsTeddies +=     `<div class="col-lg-2 col-md-4 mb-4">
                                             <div class="card">
-                                                <a href="/teddie/${produits[i]._id}">
+                                                <a href="${categorie}/produit.html?id=${produits[i]._id}&categorie=${categorie}">
                                                     <img src="${produits[i].imageUrl}" class="card-img-top">                                    
                                                 </a>
                                                 <div class="card-body text-center">
-                                                    <h5 class=""><strong><a href="/teddie/${produits[i]._id}" class="">${produits[i].name}</a></strong></h5>
+                                                    <h5 class=""><strong><a href="${categorie}/produit.html?id=${produits[i]._id}&categorie=${categorie}" class="">${produits[i].name}</a></strong></h5>
                                                     <h4 class=""><strong>${produits[i].price / 100}</strong>&nbsp;€</h4>
                                                 </div>
                                             </div>
@@ -29,8 +32,9 @@ showProductsTeddies();
 
 function showProductsCameras() {
     let listeProductsCameras='';
+    let categorie='cameras';
 
-    fetch('http://localhost:3000/api/cameras/')
+    fetch('http://localhost:3000/api/' + categorie)
     .then(function(response){
         return response.json()
     })
@@ -39,11 +43,11 @@ function showProductsCameras() {
             console.log(produits[i]);
             listeProductsCameras +=     `<div class="col-lg-2 col-md-4 mb-4">
                                             <div class="card">
-                                                <a href="/cameras/${produits[i]._id}">
+                                                <a href="${categorie}/produit.html?id=${produits[i]._id}&categorie=${categorie}">
                                                     <img src="${produits[i].imageUrl}" class="card-img-top">                                    
                                                 </a>
                                                 <div class="card-body text-center">
-                                                    <h5 class=""><strong><a href="/teddie/${produits[i]._id}" class="">${produits[i].name}</a></strong></h5>
+                                                    <h5 class=""><strong><a href="${categorie}/produit.html?id=${produits[i]._id}&categorie=${categorie}" class="">${produits[i].name}</a></strong></h5>
                                                     <h4 class=""><strong>${produits[i].price / 100}</strong>&nbsp;€</h4>
                                                 </div>
                                             </div>
@@ -56,8 +60,9 @@ showProductsCameras();
 
 function showProductsFurniture() {
     let listeProductsFurniture='';
+    let categorie='furniture';
 
-    fetch('http://localhost:3000/api/furniture/')
+    fetch('http://localhost:3000/api/' + categorie)
     .then(function(response){
         return response.json()
     })
@@ -66,11 +71,11 @@ function showProductsFurniture() {
             console.log(produits[i]);
             listeProductsFurniture +=     `<div class="col-lg-2 col-md-4 mb-4">
                                             <div class="card">
-                                                <a href="/furniture/${produits[i]._id}">
+                                                <a href="${categorie}/produit.html?id=${produits[i]._id}&categorie=${categorie}">
                                                     <img src="${produits[i].imageUrl}" class="card-img-top">                                    
                                                 </a>
                                                 <div class="card-body text-center">
-                                                    <h5 class=""><strong><a href="/furniture/${produits[i]._id}" class="">${produits[i].name}</a></strong></h5>
+                                                    <h5 class=""><strong><a href="${categorie}/produit.html?id=${produits[i]._id}&categorie=${categorie}" class="">${produits[i].name}</a></strong></h5>
                                                     <h4 class=""><strong>${produits[i].price / 100}</strong>&nbsp;€</h4>
                                                 </div>
                                             </div>

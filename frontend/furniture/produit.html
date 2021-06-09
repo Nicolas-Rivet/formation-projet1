@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="generator" content="">
-        <title>Page accueil</title>
+        <title>Page produit</title>
 
 
         <!-- Bootstrap core CSS -->
@@ -19,7 +19,7 @@
     </head>
     <body class="d-flex flex-column h-100">
         <div class="container">
-            <header class="d-flex flex-wrap justify-content-center py-3 mb-4  border-bottom">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                     <img class="bi me-2" src="/img/ecommerce.svg" style="height:30px; width:30px">
                     <span class="fs-4">Site ecommerce - Projet 1</span>
@@ -35,24 +35,47 @@
 
         <section class="mb-4">
             <div class="container">
-                <div class="py-3 ps-4">
-                    <p class="text-uppercase text-center h5">Teddies</p>
-                </div>
-                <div class="row fadeIn productRow" id="listeProductsTeddies"></div>
-            </div>
-            <div class="container">
-                <div class="py-3 ps-4">
-                    <p class="text-uppercase text-center h5">Cameras</p>
-                </div>
-                <div class="row fadeIn productRow" id="listeProductsCameras"></div>
-            </div>
-            <div class="container">
-                <div class="py-3 ps-4">
-                    <p class="text-uppercase text-center h5">Furniture</p>
-                </div>
-                <div class="row fadeIn productRow" id="listeProductsFurniture"></div>
+                <div><span>Home</span>&nbsp;-&nbsp;<span>Furniture</span>&nbsp;-&nbsp;<span id="productNameAriane"></span></div>
             </div>
         </section>
-        <script src="/js/index.js"></script>
+
+        <section class="mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 pe-2">
+                        <div class="border" style=" width:100%;" id="productImageUrl"></div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-6 pe-2">
+                        <p class="h1 mb-2 text-uppercase" id="productName"></p>
+                        <p class="h1 mb-2 text-uppercase" id="productPrice"></p>
+
+                        <div class="card my-4">
+                            <div class="card-body">
+                                <p class="card-text" id="productDescription"></p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success" type="button">Ajouter au panier</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-4">
+            <div class="container my-4">
+                <div class="text-uppercase text-center h5"><span>Produits similaires</span></div>
+            </div>
+            <div class="container">
+                <div class="row fadeIn productRow" id="listeProductsAssocie"></div>
+            </div>
+        </section>
+
+        <script src="/js/product.js"></script>
     </body>
   </html>
