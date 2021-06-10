@@ -1,6 +1,4 @@
-// Page index
-
-
+myStorage = window.localStorage;
 
 function showProductsTeddies() {
     let listeProductsTeddies='';
