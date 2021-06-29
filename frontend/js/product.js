@@ -1,8 +1,3 @@
-var activeId = '5be9c8541c9d440000665243';
-var activeCategorie = 'teddies';
-var selectedProductColor='bleu';
-var selectedProductQuantity = '2';
-
 let url= new URL(window.location.href);
 let params = new URLSearchParams(url.search)
 
@@ -17,12 +12,12 @@ if (params.get('categorie') != null) {
 console.log(url.search);
 console.log(activeId);
 
-
 function showProduct() {
     let productDescr='';
     let productColors='';
     let productForm='';
     let commandColor='';
+    let productVisuel='';
 
     fetch('http://localhost:3000/api/' + activeCategorie + '/' + activeId)
     .then(function(response){
@@ -43,7 +38,7 @@ function showProduct() {
                                         </svg>
                                     </span>`
 
-                commandColor +=     `<option value="${[i]}">${produit.colors[i]}</option>`
+                commandColor +=     `<option value="${produit.colors[i]}">${produit.colors[i]}</option>`
             }
         }
 
@@ -59,8 +54,8 @@ function showProduct() {
                             </div>`
 
         productForm +=  `<div class="d-grid gap-2">
-                            <select class="form-select" aria-label="Default select example">${commandColor}</select>
-                            <button class="btn btn-success" type="button" onclick="addPanier(${activeId}, ${selectedProductColor}, ${selectedProductQuantity});">Button</button>
+                            <select id="color" class="form-select" aria-label="Default select example">${commandColor}</select>
+                            <button class="btn btn-success" type="button" onclick="var e = document.getElementById('color');var strColor = e.options[e.selectedIndex].value;addPanier('${activeId}', strColor);">Button</button>
                         </div>`
                     
         document.getElementById('productVisuel').innerHTML = productVisuel;
@@ -100,12 +95,3 @@ function showProductsAssocie() {
     });
 }
 showProductsAssocie();
-
-myStorage = window.localStorage;
-localStorage.setItem('productCategorie', activeCategorie);
-localStorage.setItem('productId', activeId);
-localStorage.setItem('selectedProductQuantity', selectedProductQuantity);
-
-if (selectedProductColor != null) {
-    localStorage.setItem('selectedProductColor', selectedProductColor);
-}

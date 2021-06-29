@@ -1,35 +1,47 @@
-function addPanier(idArticle, optionArticle, quantityArticle){
+function addPanier(idArticle, optionArticle){
     if(localStorage.getItem("panierTeddies")){
         let panierContainerJson = localStorage.getItem("panierTeddies");
-        let panierContainer = Json.parse(panierContainerJson);
+        let panierContainer = JSON.parse(panierContainerJson);
+        let panierContainerFinal = [];
 
-        let teddiesChoice = {
-            id: idArticle,
-            option: optionArticle,
-            quantity: parseInt(quantityArticle)
-        };
+        let blnTrouve = false;
 
-        for (let i=0; i < panierContainer.lenght; i++){
-            let count = panierContainer[i];
+        for (let i=0; i < panierContainer.length; i++){
+            let teddiesChoice = panierContainer[i];
 
-            if (teddiesChoice.id == count.id && teddiesChoice.option == count.option){
+            if (idArticle == teddiesChoice.id && optionArticle == teddiesChoice.option){
                 console.log(`L'objet est déjà dans le panier`);
 
-                teddiesChoice.quantity = parseInt(count.quantity) + teddiesChoice.quantity;
-                panierContainer.splice([i], i, teddiesChoice);
+                teddiesChoice.quantity = teddiesChoice.quantity + 1;
 
                 panierContainerFinal = JSON.stringify(panierContainer);
                 localStorage.setItem("panierTeddies", panierContainerFinal);
-            } else {
-                let panierTeddiesChoice = [{
-                    id: idArticle,
-                    option: optionArticle,
-                    quantity: quantityArticle
-                }];
-    
-                teddiesChoiceJson = JSON.stringify(panierTeddiesChoice);
-                localStorage.setItem("panierTeddies", teddiesChoiceJson);
+                blnTrouve = true;
             }
-        } 
+            panierContainerFinal.push(teddiesChoice);
+        }
+        if (blnTrouve == false){
+            let teddiesChoice = {
+                id: idArticle,
+                option: optionArticle,
+                quantity: 1
+            };
+
+            panierContainerFinal.push(teddiesChoice);
+
+        }
+        panierContainerFinal = JSON.stringify(panierContainerFinal);
+        localStorage.setItem("panierTeddies", panierContainerFinal);
+
+    }
+    else {
+        let teddiesChoice = [{
+            id: idArticle,
+            option: optionArticle,
+            quantity: 1
+        }];
+
+        teddiesChoiceJson = JSON.stringify(teddiesChoice);
+        localStorage.setItem("panierTeddies", teddiesChoiceJson);
     }
 }

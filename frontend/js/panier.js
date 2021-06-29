@@ -1,43 +1,35 @@
-myStorage = window.localStorage;
-var productCategorie = localStorage.getItem('productCategorie');
-var productId = localStorage.getItem('productId');
-var selectedProductQuantity = localStorage.getItem('selectedProductQuantity');
-var selectedProductColor = localStorage.getItem('selectedProductColor');
-
-console.log(productCategorie);
-console.log(productId);
-console.log(selectedProductQuantity);
-console.log(selectedProductColor);
-
-function showProductsPanier() {
-    let listeProductsPanier='';
-
-    fetch('http://localhost:3000/api/' + productCategorie + '/' + productId)
-    .then(function(response){
-        return response.json()
-    })
-    .then(function (produits){
-            console.log(produits);
-            listeProductsPanier +=      `<table class="table text-center">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Référence</th>
-                                                    <th scope="col">Photo</th>
-                                                    <th scope="col">Nom produit</th>
-                                                    <th scope="col">Couleur</th>
-                                                    <th scope="col">Quantité</th>
-                                                    <th scope="col">Prix</th>
-                                                    <th scope="col">Retirer</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
+async function showProductsPanier() {
+    if(localStorage.getItem("panierTeddies")){
+        let listeProductsPanier =  `<table class="table text-center">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Référence</th>
+                                                <th scope="col">Photo</th>
+                                                <th scope="col">Nom produit</th>
+                                                <th scope="col">Couleur</th>
+                                                <th scope="col">Quantité</th>
+                                                <th scope="col">Prix</th>
+                                                <th scope="col">Retirer</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>`;
+        let panierContainerJson = localStorage.getItem("panierTeddies");
+        let panierContainer = JSON.parse(panierContainerJson);
+        for (let i=0; i < panierContainer.length; i++){
+            let teddy = panierContainer[i];
+            await fetch('http://localhost:3000/api/' + 'teddies' + '/' + teddy.id)
+            .then(function(response){
+                return response.json()
+            })
+            .then(function (produits){
+                    console.log(produits);
+                    listeProductsPanier +=      `<tr>
                                                     <td>${produits._id}</td>
                                                     <td><img src="${produits.imageUrl}" style='height:30px' class="">     </td>
                                                     <td>${produits.name}</td>
-                                                    <td>${selectedProductColor}</td>
-                                                    <td>${selectedProductQuantity}</td>
-                                                    <td>${(produits.price / 100) * selectedProductQuantity} €</td>
+                                                    <td>${teddy.option}</td>
+                                                    <td>${teddy.quantity}</td>
+                                                    <td>${(produits.price / 100) * teddy.quantity} €</td>
                                                     <td>
                                                         <a>
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -45,12 +37,18 @@ function showProductsPanier() {
                                                             </svg>
                                                         </a>
                                                     </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                      </div>`;
-        
+                                                </tr>`;
+                
+                
+            });
+        }
+        listeProductsPanier += `</tbody>
+                            </table>`
         document.getElementById('listeProductsPanier').innerHTML = listeProductsPanier;
-    });
+    }
+    else {
+        let listeProductsPanier =  `<div style="text-align:center;">Votre panier est vide</div>`;
+        document.getElementById('listeProductsPanier').innerHTML = listeProductsPanier;    
+    }
 }
 showProductsPanier();
