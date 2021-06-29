@@ -19,11 +19,10 @@ console.log(activeId);
 
 
 function showProduct() {
-    let productName='';
-    let productImageUrl='';
-    let productPrice='';
-    let productDescription='';
+    let productDescr='';
     let productColors='';
+    let productForm='';
+    let commandColor='';
 
     fetch('http://localhost:3000/api/' + activeCategorie + '/' + activeId)
     .then(function(response){
@@ -33,30 +32,41 @@ function showProduct() {
         
         console.log(produit);
 
-        productName += `${produit.name}`;
-        productImageUrl += `<img style="width:100%" src="${produit.imageUrl}">`;
-        productPrice += `${produit.price / 100}&nbsp;€`;
-        productDescription += `${produit.description}`;
 
         if (produit.colors != null) {      
             for (let i = 0; i < produit.colors.length; i++) {
                 console.log(produit.colors[i]);
-                productColors +=    `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="50" fill="grey"></circle>
-                                        <circle cx="50" cy="50" r="48" fill="${produit.colors[i]}"></circle>
-                                    </svg>`
+                productColors +=    `<span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" fill="grey"></circle>
+                                            <circle cx="50" cy="50" r="48" fill="${produit.colors[i]}"></circle>
+                                        </svg>
+                                    </span>`
 
                 commandColor +=     `<option value="${[i]}">${produit.colors[i]}</option>`
-
-                document.getElementById('productColors').innerHTML = productColors;            
-                document.getElementById('commandColor').innerHTML = commandColor;
             }
         }
-        document.getElementById('productName').innerHTML = productName;
-        document.getElementById('productImageUrl').innerHTML = productImageUrl;
-        document.getElementById('productNameAriane').innerHTML = productName;
-        document.getElementById('productPrice').innerHTML = productPrice;
-        document.getElementById('productDescription').innerHTML = productDescription;
+
+        productVisuel +=    `<img style="width:100%" src="${produit.imageUrl}">`
+
+        productDescr += `<p class="h1 mb-2 text-uppercase">${produit.name}</p>
+                            <p class="h1 mb-2 text-uppercase">${produit.price / 100}&nbsp;€</p>
+
+                            <div class="card my-4">
+                                <div class="card-body">
+                                    <p class="card-text">${produit.description}</p>
+                                </div>
+                            </div>`
+
+        productForm +=  `<div class="d-grid gap-2">
+                            <select class="form-select" aria-label="Default select example">${commandColor}</select>
+                            <button class="btn btn-success" type="button" onclick="addPanier(${activeId}, ${selectedProductColor}, ${selectedProductQuantity});">Button</button>
+                        </div>`
+                    
+        document.getElementById('productVisuel').innerHTML = productVisuel;
+        document.getElementById('productDescr').innerHTML = productDescr;
+        document.getElementById('productColors').innerHTML = productColors;
+        document.getElementById('productForm').innerHTML = productForm;
     });
 }
 showProduct();
