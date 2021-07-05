@@ -13,9 +13,6 @@ function addPanier(idArticle, optionArticle){
                 console.log(`L'objet est déjà dans le panier`);
 
                 teddiesChoice.quantity = teddiesChoice.quantity + 1;
-
-                panierContainerFinal = JSON.stringify(panierContainer);
-                localStorage.setItem("panierTeddies", panierContainerFinal);
                 blnTrouve = true;
             }
             panierContainerFinal.push(teddiesChoice);
@@ -30,8 +27,8 @@ function addPanier(idArticle, optionArticle){
             panierContainerFinal.push(teddiesChoice);
 
         }
-        panierContainerFinal = JSON.stringify(panierContainerFinal);
-        localStorage.setItem("panierTeddies", panierContainerFinal);
+        panierContainer = JSON.stringify(panierContainerFinal);
+        localStorage.setItem("panierTeddies", panierContainer);
 
     }
     else {
